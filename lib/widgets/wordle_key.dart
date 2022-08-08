@@ -6,6 +6,15 @@ class WordleKey extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Widget keyCap ;
+    if(letter =="_"){
+      keyCap =  Icon(Icons.keyboard_return);
+    }else if(letter == "<"){
+      keyCap = Icon(Icons.backspace_outlined);
+    }else{
+      keyCap = Text(letter);
+    }
+
     return Container(
       width: 40,
       height: 60,
@@ -15,7 +24,7 @@ class WordleKey extends StatelessWidget {
       decoration: BoxDecoration(
        color: Color.fromARGB(44, 44, 44, 44)
       ),
-      child: Text(letter),
+      child: keyCap,
     );
   }
 }
