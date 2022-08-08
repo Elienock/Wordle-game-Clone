@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:wordle_clone/providers/game_settings_provider.dart';
+import 'package:wordle_clone/providers/game_state_provider.dart';
 import 'package:wordle_clone/widgets/wordle_row.dart';
 
 
@@ -10,6 +11,8 @@ class WordleGrid extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
   final gameSettings = ref.watch(gameSettingsProvider);
+
+
   final wordSize = gameSettings.wordSize;
 
   final List<WordleRow> rows = List.empty(growable: true);
