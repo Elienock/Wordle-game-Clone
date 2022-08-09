@@ -4,20 +4,22 @@ import 'package:wordle_clone/providers/game_settings_provider.dart';
 import 'package:wordle_clone/providers/game_state_provider.dart';
 import 'package:wordle_clone/widgets/wordle_row.dart';
 
-
 class WordleGrid extends ConsumerWidget {
   const WordleGrid({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
   final gameSettings = ref.watch(gameSettingsProvider);
-
+  final gameState = ref.watch(gameStateProvider);
 
   final wordSize = gameSettings.wordSize;
-
   final List<WordleRow> rows = List.empty(growable: true);
   for (int i =0;i< gameSettings.attempts; i ++){
-    rows.add(WordleRow(wordSize: wordSize));
+    var word = "";
+    if (gameState.attempts.length > i){
+      word = gameState.attempts[i];
+    }
+    rows.add(WordleRow(wordSize: wordSize, word: word));
   }
     return Container(
       child: Column(
